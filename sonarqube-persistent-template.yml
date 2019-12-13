@@ -286,7 +286,7 @@ objects:
         - code-scan
         from:
           kind: ImageStreamTag
-          name: sonarqube:latest
+          name: code-scan:latest
       type: ImageChange
     - type: ConfigChange
 - apiVersion: v1
