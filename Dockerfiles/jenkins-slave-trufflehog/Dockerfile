@@ -12,7 +12,7 @@ RUN yum repolist > /dev/null && \
     yum clean all && \
     yum install -y --enablerepo=rhel-server-rhscl-7-rpms --setopt=tsflags=nodocs rh-python36 && \
     yum clean all && \
-    scl enable rh-python36 python3 -m pip install trufflehog
+    scl enable rh-python36 "python3 -m pip install trufflehog"
 
 USER 1001
 
