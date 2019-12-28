@@ -10,13 +10,12 @@ USER root
 
 RUN yum repolist > /dev/null && \
     yum clean all && \
-    yum install -y --enablerepo=rhel-server-rhscl-7-rpms --setopt=tsflags=nodocs bzip2 rh-nodejs6 && \
+    yum install -y --enablerepo=rhel-server-rhscl-7-rpms --setopt=tsflags=nodocs bzip2 rh-nodejs10 && \
     yum clean all && \
-    scl enable rh-nodejs6 "NPM_CONFIG_LOGLEVEL=warn NPM_CONFIG_PROGRESS=false NPM_CONFIG_SPIN=false npm install -g the-a11y-machine" && \
-    ln -s /tmp /a11ym_output
+    scl enable rh-nodejs10 "NPM_CONFIG_LOGLEVEL=warn NPM_CONFIG_PROGRESS=false NPM_CONFIG_SPIN=false PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install -g pa11y" 
 
-# Enable rh-nodejs6 
-RUN printf '#!/bin/bash\nsource scl_source enable rh-nodejs6\nexec "$@"\n' > /usr/bin/entrypoint.sh && \
+# Enable rh-nodejs10 
+RUN printf '#!/bin/bash\nsource scl_source enable rh-nodejs10\nexec "$@"\n' > /usr/bin/entrypoint.sh && \
     chmod +x /usr/bin/entrypoint.sh
 
 ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
