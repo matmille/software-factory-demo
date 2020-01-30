@@ -8,11 +8,11 @@ LABEL com.redhat.component="eap72-openshift-hardened" \
       io.openshift.tags="openshift,eap"
 USER root
 
-RUN find / -xdev -perm /6000 -type f -exec chmod a-s {} \;
 RUN yum repolist > /dev/null && \
     yum clean all && \
     yum -y update && \
     yum clean all
+RUN find / -xdev -perm /6000 -type f -exec chmod a-s {} \;
 
 USER 1001
 
