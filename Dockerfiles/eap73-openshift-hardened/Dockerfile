@@ -1,4 +1,4 @@
-FROM jboss-eap-7/eap73-openjdk11-openshift-rhel8:latest
+FROM dev-user50/eap73-openjdk11-openshift-rhel8:latest
 
 LABEL com.redhat.component="eap73-openshift-hardened" \
       name="eap73-openshift-hardened" \
